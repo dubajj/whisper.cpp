@@ -28,12 +28,13 @@ include(DefaultTargetOptions)
 set_target_properties(${TARGET} PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 if (WHISPER_SUPPORT_SDL2)
-    # common-sdl
+    # common-audio
 
-    set(TARGET common-sdl)
+    set(TARGET common-audio)
 
     add_library(${TARGET} STATIC
-        common-sdl.h
+        common-audio.h
+        common-audio.cpp
         common-sdl.cpp
         )
 
@@ -43,6 +44,18 @@ if (WHISPER_SUPPORT_SDL2)
     target_link_libraries(${TARGET} PRIVATE ${SDL2_LIBRARIES})
 
     set_target_properties(${TARGET} PROPERTIES POSITION_INDEPENDENT_CODE ON)
+elseif(WHISPER_SUPPORT_MINIAUDIO)
+    set(TARGET common-audio)
+
+    add_library(${TARGET} STATIC
+        common-audio.h
+        common-audio.cpp
+        common-miniaudio.cpp
+        )
+
+    include(DefaultTargetOptions)
+
+    # target_link_libraries(${TARGET} PRIVATE ${SDL2_LIBRARIES})
 endif()
 
 # examples

@@ -2,7 +2,7 @@
 //
 
 #include "common.h"
-#include "common-sdl.h"
+#include "common-audio.h"
 #include "whisper.h"
 #include "llama.h"
 
@@ -374,7 +374,7 @@ int main(int argc, char ** argv) {
     // main loop
     while (is_running) {
         // handle Ctrl + C
-        is_running = sdl_poll_events();
+        is_running = poll_keep_running();
 
         if (!is_running) {
             break;
@@ -521,7 +521,7 @@ int main(int argc, char ** argv) {
                         }
                     }
 
-                    is_running = sdl_poll_events();
+                    is_running = poll_keep_running();
 
                     if (!is_running) {
                         break;

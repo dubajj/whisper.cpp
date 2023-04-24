@@ -7,7 +7,7 @@
 //
 
 #include "common.h"
-#include "common-sdl.h"
+#include "common-audio.h"
 #include "whisper.h"
 
 #include <sstream>
@@ -313,7 +313,7 @@ int process_command_list(struct whisper_context * ctx, audio_async &audio, const
     // main loop
     while (is_running) {
         // handle Ctrl + C
-        is_running = sdl_poll_events();
+        is_running = poll_keep_running();
 
         // delay
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
@@ -454,7 +454,7 @@ int always_prompt_transcription(struct whisper_context * ctx, audio_async & audi
     // main loop
     while (is_running) {
         // handle Ctrl + C
-        is_running = sdl_poll_events();
+        is_running = poll_keep_running();
 
         // delay
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
@@ -533,7 +533,7 @@ int process_general_transcription(struct whisper_context * ctx, audio_async &aud
     // main loop
     while (is_running) {
         // handle Ctrl + C
-        is_running = sdl_poll_events();
+        is_running = poll_keep_running();
 
         // delay
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
