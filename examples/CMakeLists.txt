@@ -55,7 +55,10 @@ elseif(WHISPER_SUPPORT_MINIAUDIO)
 
     include(DefaultTargetOptions)
 
-    # target_link_libraries(${TARGET} PRIVATE ${SDL2_LIBRARIES})
+    if(APPLE)
+        target_link_libraries(${TARGET} "-framework CoreFoundation" "-framework CoreAudio" "-framework AudioToolbox")
+    endif()
+    # 
 endif()
 
 # examples

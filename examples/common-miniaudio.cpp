@@ -10,7 +10,7 @@
 #include <csignal>
 
 namespace {
-    std::atomic_bool shutdown_request = false;
+    std::atomic_bool shutdown_request(false);
 }
 
 void data_callback(ma_device* device, void* /*pOutput*/, const void* input, ma_uint32 num_frames) {
