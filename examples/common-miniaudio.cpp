@@ -119,7 +119,7 @@ bool audio_async::resume() {
         return false;
     }
 
-    if (!device_state == ma_device_state_stopped) {
+    if (device_state != ma_device_state_stopped) {
         fprintf(stderr, "%s: already running!\n", __func__);
         return false;
     }
@@ -138,7 +138,7 @@ bool audio_async::pause() {
         return false;
     }
 
-    if (!device_state == ma_device_state_stopped) {
+    if (device_state == ma_device_state_stopped) {
         fprintf(stderr, "%s: already paused!\n", __func__);
         return false;
     }

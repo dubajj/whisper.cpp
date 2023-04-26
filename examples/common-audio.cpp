@@ -1,5 +1,5 @@
 #include "common-audio.h"
-
+#include <cstring> // memcpy
 
 void audio_data_callback(audio_data * ad, const float * stream, size_t n_samples) {
     if (!ad || !ad->running) { return; }

@@ -13,6 +13,7 @@
 #include <thread>
 #include <vector>
 #include <fstream>
+#include <cstring> // memcpy
 
 //  500 -> 00:05.000
 // 6000 -> 01:00.000
